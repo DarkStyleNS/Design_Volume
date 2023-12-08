@@ -1,0 +1,131 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        html{
+            font-size: 10px;
+        }
+        body{
+            background-color: black;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .volumebox{
+            width: 80px;
+            height: 310px;
+            background-color: rgba(12, 12, 12, 0.6);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header{
+            width: 80px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+            padding: 1rem;
+        }
+        .body{
+            width: 80px;
+            height: 240px;
+        }
+        .footer{
+            width: 80px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            font-size: 16px;
+        }
+        .progres{
+            width: 4px;
+            height: 230px;
+            background-color: white;
+            margin: auto;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        .filled{
+            width: 4px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            height: 0px;
+            background-color: aqua;
+            position: absolute;
+            bottom: 0;
+            border-radius: 5px;
+        }
+        button{
+            border: none;
+            background: none;
+            outline: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="volumebox" id="volumebox">
+            <div class="header" id="header"><div>0</div></div>
+            <div class="body" id="header">
+                <div class="progres" id="progres">
+                    <div class="filled" id="filled" data_val="0"></div>
+                </div>
+            </div>
+            <div class="footer" id="header">
+                <div class="plus" id="plus" onclick="plus()"><button onclick="plus(this)">+</button></div>
+                <div class="minus" id="minus" onclick="minus()"><button onclick="minus(this)">-</button></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function plus(){
+            var volSpan = document.getElementById("filled")
+            var volSpanValue = parseInt(volSpan.getAttribute("data_val")) 
+            if (volSpanValue < 230){
+                volSpanValue += 30
+                volSpan.setAttribute("data_val", volSpanValue)
+                volSpan.style.height = volSpanValue + "px"
+            }
+        }
+        function minus(){
+            var volSpan = document.getElementById("filled")
+            var volSpanValue = parseInt(volSpan.getAttribute("data_val")) 
+            if (volSpanValue >= 0){
+                volSpanValue -= 24
+                volSpan.setAttribute("data_val", volSpanValue)
+                volSpan.style.height = volSpanValue + "px"
+                if(volSpan < 23){
+                    volSpan = 0
+                    volSpan.style.height = volSpanValue + "px"
+                }
+            }
+        }
+    </script>
+</body>
+</html>
